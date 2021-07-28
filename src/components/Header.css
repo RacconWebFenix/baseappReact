@@ -70,11 +70,11 @@ nav {
   }
 }
 
-.nav-list.active{
+.nav-list.active {
   transform: translateX(0);
 }
 
-@keyframes navLinkFade{
+@keyframes navLinkFade {
   from {
     opacity: 0;
     transform: translateX(50px);
@@ -85,3 +85,14 @@ nav {
   }
 }
 
+.mobile-menu.active .line1 {
+  transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+  opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+  transform: rotate(45deg) translate(-5px, -7px);
+}

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../components/Header.css";
 import { Link } from "react-router-dom";
-import logo from '../img/logo-blue.gif'
+import logo from "../img/logo-blue.gif";
 
 export default function Header() {
   const [navList, setNavList] = useState("nav-list");
+  const [mobileMenu, setMobileMenu] = useState("mobile-menu");
 
   const HandleNavLinks = () => {
     const navLinks = document.querySelectorAll(".nav-links");
@@ -23,36 +24,42 @@ export default function Header() {
     } else {
       setNavList(navList.replace(navList, "nav-list"));
     }
+    if (mobileMenu === "mobile-menu") {
+      setMobileMenu(mobileMenu.replace(mobileMenu, "mobile-menu active"));
+     
+    } else {
+      setMobileMenu(mobileMenu.replace(mobileMenu, "mobile-menu"));
+    }
   };
 
   return (
     <div>
       <header>
         <nav>
-          <Link to="/" >
-            <img src={logo} alt={"Logo BlueEdtech"} className={'logo'}/>
+          <Link to="/">
+            <img src={logo} alt={"Logo BlueEdtech"} className={"logo"} />
           </Link>
           <div
-            className={"mobile-menu"}
+            className={mobileMenu}
             onClick={HandleClickNav}
             onPointerUp={HandleNavLinks}
-            >
-            <div></div>
-            <div></div>
-            <div></div>
+          >
+            <div className={"line1"}></div>
+            <div className={"line2"}></div>
+            <div className={"line3"}></div>
           </div>
           <ul className={navList}>
             <li className={"nav-links"}>
               <Link to="/">Home</Link>
             </li>
             <li className={"nav-links"}>
-            <Link to="/personagens">Personagens</Link>
+              <Link to="/personagens">Personagens</Link>
             </li>
             <li className={"nav-links"}>
-            <Link to="/sobre">Sobre</Link>
+              <Link to="/sobre">Sobre</Link>
             </li>
             <li className={"nav-links"}>
-            <Link to="/contato">Contato</Link>
+              <Link to="/contato">Contato</Link>
             </li>
           </ul>
         </nav>
