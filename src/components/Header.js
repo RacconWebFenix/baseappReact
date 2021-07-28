@@ -53,7 +53,7 @@ export default function Header() {
               <Link to="/">Home</Link>
             </li>
             <li className={"nav-links"}>
-              <Link to="/personagens">Personagens</Link>
+              <Link to="/personagens">Base App</Link>
             </li>
             <li className={"nav-links"}>
               <Link to="/sobre">Sobre</Link>
