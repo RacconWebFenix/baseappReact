@@ -33,7 +33,7 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <div >
       <header>
         <nav>
           <Link to="/">
