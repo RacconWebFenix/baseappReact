@@ -1,90 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
-    box-sizing: border-box;
-    font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
 }
 
 .corpo {
-    background: #f6f9ff;
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: #434343;
-
+  background: url("../img/ceu.jpg") no-repeat center center;
+  background-size: cover;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #434343;
+  box-shadow: 0 0 30px 30px #2888e0;
 }
 
-main.cards{
-    display: flex;
-    padding: 32px;
-    flex-wrap: wrap;
-
+main.cards {
+  display: flex;
+  padding: 32px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-main.cards section.card{
-    display: flex;
+main.cards section.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-left: 32px;
+  box-shadow: 20px 20px 50px -30px black;
+}
+
+main.cards section.card .icon {
+  width: 200px;
+  height: 200px;
+}
+
+main.cards section.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+main.cards section.card h3 {
+  font-size: 100%;
+  margin: 16px 0;
+}
+
+main.cards section.card span {
+  font-weight: 300;
+  max-width: 240px;
+  font-size: 80%;
+  margin-bottom: 16px;
+}
+
+main.cards section.card button {
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  border-radius: 32px;
+  border: 0;
+  cursor: pointer;
+  font-size: 80%;
+  font-weight: 500;
+  background: linear-gradient(to right, rgb(133, 115, 115), rgb(190, 189, 189));
+}
+
+@media screen and (max-width: 1200px) {
+  main.cards {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    background: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    margin-left: 32px;
-    box-shadow: 20px 20px 50px -30px black;
-
-}
-main.cards section.card:first-child{
+    flex-wrap: nowrap;
+  }
+  main.cards section.card {
     margin-left: 0;
+    margin-bottom: 32px;
+  }
 }
 
-main.cards section.card .icon{
-    width: 200px;
-    height: 200px;
+.botoes button {
+  margin: 5px;
 }
 
-main.cards section.card img{
-    width: 100%;
-    border-radius: 10px;
-}
-main.cards section.card h3{
-    font-size: 100%;
-    margin: 16px 0;
-     
-}
-main.cards section.card span{
-    font-weight: 300;
-    max-width: 240px;
-    font-size: 80%;
-    margin-bottom: 16px;
-     
+/* Modal */
+
+.bgModal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  z-index: 2;
+  top: -100%;
+  display: none;
+  display: block;
+  transition: 350ms;
 }
 
-main.cards section.card button{
-    padding: 0.5rem 1rem ;
-    text-transform: uppercase;
-    border-radius: 32px;
-    border: 0;
-    cursor: pointer;
-    font-size: 80%;
-    font-weight: 500;
-    background: linear-gradient(to right, rgb(133, 115, 115), rgb(190, 189, 189));
+.modal {
+  width: 50%;
+  height: 60%;
+  background: #fff;
+  border-radius: 1rem;
+  margin: 80px auto 0 auto;
+  box-shadow: 20px 20px 50px -30px black;
 }
 
-@media screen and (max-width: 1200px){
-    main.cards{
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: nowrap;
-
-    }
-    main.cards section.card{
-        margin-left: 0;
-        margin-bottom: 32px;
-    
-    }
+.modal span {
+  float: right;
+  font-size: 3rem;
+  color: #000;
+  margin: 20px;
+  transition: 350ms;
+  cursor: pointer;
 }
 
-.botoes button{
-    margin: 5px;
+.modal span:hover {
+  color: #990000;
+  transition: 350ms;
+}
+
+/* Form Modal */
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  padding: 1rem;
+  justify-content: space-around;
 }
