@@ -54,88 +54,97 @@ const fecharModal = () => {
   imputs.forEach((i) => (i.value = ""));
 };
 
-
-
 export default function Cards() {
   const [skycrapers, setSkycrapers] = useState(skys.skycraper);
-  const [nome, setNome] = useState("");
-  const [altura, setAltura] = useState("");
-  const [localizacao, setLocalizacao] = useState("");
-  const [desc, setDesc] = useState("");
-  const [imagemURL, setImagemURL] = useState("");
-  const [index, setIndex] = useState(false);
-  // const [editar, setEditar] = useState(false);
+  const [valorInputNome, setValorInputNome] = useState("");
+  const [valorInputAltura, setValorInputAltura] = useState("");
+  const [valorInputLocalizacao, setValorInputLocalizacao] = useState("");
+  const [valorInputDesc, setValorInputDesc] = useState("");
+  const [valorInputImagemURL, setValorInputImagemURL] = useState("");
+  const [index, setIndex] = useState("");
+  const [editando, setEditando] = useState(false);
 
-
-  const estadoNome = (e) => {
-    const valorNome = e.target.value;
-    setNome(valorNome);
-  };
-  const estadoAltura = (e) => {
-    const valorAltura = e.target.value;
-
-    setAltura(valorAltura);
-  };
-  const estadoLocalizacao = (e) => {
-    const valorLocalizacao = e.target.value;
-
-    setLocalizacao(valorLocalizacao);
-  };
-  const estadoDesc = (e) => {
-    const valorDesc = e.target.value;
-    setDesc(valorDesc);
-  };
-
-  const estadoImagemURL = (e) => {
-    const valorImagemURL = e.target.value;
-    setImagemURL(valorImagemURL);
-  };
-
-  const createFunction = () => {
-    const newSkycraper = { nome, altura, localizacao, desc, imagemURL };
-    if (!nome || !altura || !localizacao || !desc || !imagemURL) {
-      alert("Precha os campos corretamente");
-    } else {
-      skycrapers.push(newSkycraper);
-      console.log(skycrapers);
+  const CreateFunction = () => {
+    if (editando === true) {
+      if (
+        valorInputNome === "" ||
+        valorInputAltura === "" ||
+        valorInputLocalizacao === "" ||
+        valorInputDesc === "" ||
+        valorInputImagemURL === ""
+      ) {
+        alert("Ta vaziu aí oh!");
+        return;
+      }
+      skycrapers[index].nome = valorInputNome;
+      skycrapers[index].altura = valorInputAltura;
+      skycrapers[index].localizacao = valorInputLocalizacao;
+      skycrapers[index].desc = valorInputDesc;
+      skycrapers[index].imagemURL = valorInputImagemURL;
       setSkycrapers(skycrapers);
-      setIndex(true);
-      setNome("");
-      setAltura("");
-      setLocalizacao("");
-      setDesc("");
-      setImagemURL("");
-      fecharModal();
+      setEditando(false);
+      fecharModal()
+    } else {
+      if (
+        valorInputNome === "" ||
+        valorInputAltura === "" ||
+        valorInputLocalizacao === "" ||
+        valorInputDesc === "" ||
+        valorInputImagemURL === ""
+      ) {
+        alert("Ta vaziu aí oh!");
+        return;
+      }
+      const newSky = {
+        nome: valorInputNome,
+        altura: valorInputAltura,
+        localizacao: valorInputLocalizacao,
+        desc: valorInputDesc,
+        imagemURL: valorInputImagemURL,
+      };
+      setSkycrapers([...skycrapers, newSky]);
+      fecharModal()
     }
   };
 
-  // const editingFunction = (s) => {
-  //   setEditar(true);
-  //   setNome(s.nome);
-  //   setAltura(s.altura);
-  //   setLocalizacao(s.localizacao);
-  //   setDesc(s.desc);
-  //   setImagemURL(s.imagemURL);
-  //   abrirModal();
 
-  //   const textNome = document.querySelector("#nomeText");
-  //   const textAltura = document.querySelector("#alturaText");
-  //   const textLocalizacao = document.querySelector("#locaText");
-  //   const textDesc = document.querySelector("#descText");
-  //   const textImagemUrl = document.querySelector("#imgText");
-  //   textNome.value = nome
-  //   // console.log(textNome);
-  //   console.log(nome);
-  //   console.log(s);
-  // };
+  const editandoF = (e, i) => {
+    setEditando(true);
+    abrirModal()
+    setValorInputNome(e.nome);
+    setValorInputAltura(e.altura);
+    setValorInputLocalizacao(e.localizacao);
+    setValorInputDesc(e.desc);
+    setValorInputImagemURL(e.imagemURL);
+    setIndex(i);
+  };
+
+
+  const deleteF = (i) => {
+    const filtroRemove = skycrapers.filter((s) => s !== i);
+    setSkycrapers(filtroRemove);
+  };
 
   useEffect(() => {
-    if (index === true) {
-      setIndex(false);
-
-      return setSkycrapers(skycrapers);
-    }
-  }, [index, skycrapers]);
+    setSkycrapers(skycrapers);
+    setValorInputNome(valorInputNome);
+    setValorInputAltura(valorInputAltura);
+    setValorInputLocalizacao(valorInputLocalizacao);
+    setValorInputDesc(valorInputDesc);
+    setValorInputImagemURL(valorInputImagemURL);
+    setIndex(index);
+    setEditando(editando);
+    console.log(valorInputImagemURL);
+  }, [
+    valorInputNome,
+    skycrapers,
+    index,
+    editando,
+    valorInputAltura,
+    valorInputLocalizacao,
+    valorInputDesc,
+    valorInputImagemURL,
+  ]);
 
   return (
     <>
@@ -149,45 +158,35 @@ export default function Cards() {
               &times;
             </span>
             <div>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className={"inputs"}>
-                  <input
-                    type={"text"}
-                    className={"inputText"}
-                    onChange={estadoNome}
-                    id={"nomeText"}
-                  />
-                  <input
-                    type={"text"}
-                    className={"inputText"}
-                    onChange={estadoAltura}
-                    id={"alturaText"}
-                  />
-                  <input
-                    type={"text"}
-                    className={"inputText"}
-                    onChange={estadoLocalizacao}
-                    id={"locaText"}
-                  />
-                  <input
-                    type={"text"}
-                    className={"inputText"}
-                    onChange={estadoDesc}
-                    id={"descText"}
-                  />
-                  <input
-                    type={"text"}
-                    className={"inputText"}
-                    onChange={estadoImagemURL}
-                    id={"imgText"}
-                  />
-                </div>
-
-                <button type={"submit"} onClick={createFunction}>
-                  Save
-                </button>
-                <button onClick={fecharModal}>Cancelar</button>
-              </form>
+              <div className={"inputs"}>
+                <input
+                  type={"text"}
+                  value={valorInputNome}
+                  onChange={(e) => setValorInputNome(e.target.value)}
+                />
+                <input
+                  type={"text"}
+                  value={valorInputAltura}
+                  onChange={(e) => setValorInputAltura(e.target.value)}
+                />
+                <input
+                  type={"text"}
+                  value={valorInputLocalizacao}
+                  onChange={(e) => setValorInputLocalizacao(e.target.value)}
+                />
+                <input
+                  type={"text"}
+                  value={valorInputDesc}
+                  onChange={(e) => setValorInputDesc(e.target.value)}
+                />
+                <input
+                  type={"text"}
+                  value={valorInputImagemURL}
+                  onChange={(e) => setValorInputImagemURL(e.target.value)}
+                />
+              </div>
+              <button onClick={CreateFunction}>Save</button>
+              <button onClick={fecharModal}>Cancelar</button>
             </div>
           </div>
         </div>
@@ -204,8 +203,8 @@ export default function Cards() {
                 <span>{s.desc}.</span>
                 <span>Altura: {s.altura}</span>
                 <div className={"botoes"}>
-                  <button /*onClick={() => editingFunction(s)}*/>Editar</button>
-                  <button>Excluir</button>
+                  <button onClick={() => editandoF(s, i)}>Editar</button>
+                  <button onClick={() => deleteF(s, i)}>Excluir</button>
                 </div>
               </section>
             );
