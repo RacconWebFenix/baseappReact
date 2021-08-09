@@ -42,17 +42,6 @@ const skys = {
   ],
 };
 
-const abrirModal = () => {
-  const modal = document.querySelector("#modal");
-  modal.style.top = "0";
-};
-
-const fecharModal = () => {
-  const modal = document.querySelector("#modal");
-  modal.style.top = "-100%";
-  const imputs = document.querySelectorAll(".inputText");
-  imputs.forEach((i) => (i.value = ""));
-};
 
 export default function Cards() {
   const [skycrapers, setSkycrapers] = useState(skys.skycraper);
@@ -63,6 +52,23 @@ export default function Cards() {
   const [valorInputImagemURL, setValorInputImagemURL] = useState("");
   const [index, setIndex] = useState("");
   const [editando, setEditando] = useState(false);
+
+
+const abrirModal = () => {
+  const modal = document.querySelector("#modal");
+  modal.style.top = "0";
+};
+
+const fecharModal = () => {
+  const modal = document.querySelector("#modal");
+  modal.style.top = "-100%";
+  setValorInputNome("");
+  setValorInputAltura("");
+  setValorInputLocalizacao("");
+  setValorInputDesc("");
+  setValorInputImagemURL("");
+};
+
 
   const CreateFunction = () => {
     if (editando === true) {
@@ -83,7 +89,8 @@ export default function Cards() {
       skycrapers[index].imagemURL = valorInputImagemURL;
       setSkycrapers(skycrapers);
       setEditando(false);
-      fecharModal()
+
+      fecharModal();
     } else {
       if (
         valorInputNome === "" ||
@@ -103,14 +110,18 @@ export default function Cards() {
         imagemURL: valorInputImagemURL,
       };
       setSkycrapers([...skycrapers, newSky]);
-      fecharModal()
+      setValorInputNome("");
+      setValorInputAltura("");
+      setValorInputLocalizacao("");
+      setValorInputDesc("");
+      setValorInputImagemURL("");
+      fecharModal();
     }
   };
 
-
   const editandoF = (e, i) => {
     setEditando(true);
-    abrirModal()
+    abrirModal();
     setValorInputNome(e.nome);
     setValorInputAltura(e.altura);
     setValorInputLocalizacao(e.localizacao);
@@ -118,7 +129,6 @@ export default function Cards() {
     setValorInputImagemURL(e.imagemURL);
     setIndex(i);
   };
-
 
   const deleteF = (i) => {
     const filtroRemove = skycrapers.filter((s) => s !== i);
