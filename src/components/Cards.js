@@ -163,26 +163,31 @@ export default function Cards() {
                   type={"text"}
                   value={valorInputNome}
                   onChange={(e) => setValorInputNome(e.target.value)}
+                  placeholder="Nome"
                 />
                 <input
                   type={"text"}
                   value={valorInputAltura}
                   onChange={(e) => setValorInputAltura(e.target.value)}
+                  placeholder="Altura"
                 />
                 <input
                   type={"text"}
                   value={valorInputLocalizacao}
                   onChange={(e) => setValorInputLocalizacao(e.target.value)}
+                  placeholder="Localização"
                 />
                 <input
                   type={"text"}
                   value={valorInputDesc}
                   onChange={(e) => setValorInputDesc(e.target.value)}
+                  placeholder="Descição"
                 />
                 <input
                   type={"text"}
                   value={valorInputImagemURL}
                   onChange={(e) => setValorInputImagemURL(e.target.value)}
+                  placeholder="URL da Imagem"
                 />
               </div>
               <button onClick={CreateFunction}>Save</button>
