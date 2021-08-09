@@ -42,7 +42,6 @@ const skys = {
   ],
 };
 
-
 export default function Cards() {
   const [skycrapers, setSkycrapers] = useState(skys.skycraper);
   const [valorInputNome, setValorInputNome] = useState("");
@@ -53,22 +52,20 @@ export default function Cards() {
   const [index, setIndex] = useState("");
   const [editando, setEditando] = useState(false);
 
+  const abrirModal = () => {
+    const modal = document.querySelector("#modal");
+    modal.style.top = "0";
+  };
 
-const abrirModal = () => {
-  const modal = document.querySelector("#modal");
-  modal.style.top = "0";
-};
-
-const fecharModal = () => {
-  const modal = document.querySelector("#modal");
-  modal.style.top = "-100%";
-  setValorInputNome("");
-  setValorInputAltura("");
-  setValorInputLocalizacao("");
-  setValorInputDesc("");
-  setValorInputImagemURL("");
-};
-
+  const fecharModal = () => {
+    const modal = document.querySelector("#modal");
+    modal.style.top = "-100%";
+    setValorInputNome("");
+    setValorInputAltura("");
+    setValorInputLocalizacao("");
+    setValorInputDesc("");
+    setValorInputImagemURL("");
+  };
 
   const CreateFunction = () => {
     if (editando === true) {
@@ -89,7 +86,6 @@ const fecharModal = () => {
       skycrapers[index].imagemURL = valorInputImagemURL;
       setSkycrapers(skycrapers);
       setEditando(false);
-
       fecharModal();
     } else {
       if (
