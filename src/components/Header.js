@@ -26,14 +26,13 @@ export default function Header() {
     }
     if (mobileMenu === "mobile-menu") {
       setMobileMenu(mobileMenu.replace(mobileMenu, "mobile-menu active"));
-     
     } else {
       setMobileMenu(mobileMenu.replace(mobileMenu, "mobile-menu"));
     }
   };
 
   return (
-    <div >
+    <div>
       <header>
         <nav>
           <Link to="/">
@@ -54,12 +53,6 @@ export default function Header() {
             </li>
             <li className={"nav-links"}>
               <Link to="/skycraper">Skycrapers</Link>
-            </li>
-            <li className={"nav-links"}>
-              <Link to="/sobre">Sobre</Link>
-            </li>
-            <li className={"nav-links"}>
-              <Link to="/contato">Contato</Link>
             </li>
           </ul>
         </nav>

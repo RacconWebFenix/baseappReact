@@ -16,7 +16,6 @@ export default function Cards() {
   const loadSkycrapers = async () => {
     const response = await fetch(BASE_URL);
     const data = await response.json();
-    console.log(data);
     setSkycrapers(data);
   };
 
