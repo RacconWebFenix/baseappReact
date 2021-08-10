@@ -1,49 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Cards.css";
-import a from "../img/ceu.jpg";
 
-const skys = {
-  skycraper: [
-    {
-      nome: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      altura: "150km",
-      localizacao: "Loren isrun ",
-      desc: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      imagemURL: a,
-    },
-    {
-      nome: "Tranim.",
-      altura: "12km",
-      localizacao: "Loren isrun ",
-      desc: "Lorenloren.",
-      imagemURL: a,
-    },
-    {
-      nome: "Domingues",
-      altura: "130km",
-      localizacao: "Loren isrun ",
-      desc: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      imagemURL: a,
-    },
-    {
-      nome: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      altura: "150km",
-      localizacao: "Loren isrun ",
-      desc: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      imagemURL: a,
-    },
-    {
-      nome: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      altura: "200km",
-      localizacao: "Loren isrun ",
-      desc: "Loren isrun loren isrun loren isrun loren isrun loren.",
-      imagemURL: a,
-    },
-  ],
-};
+const BASE_URL = "https://api-modelblue.herokuapp.com/skycraper";
 
 export default function Cards() {
-  const [skycrapers, setSkycrapers] = useState(skys.skycraper);
+  const [skycrapers, setSkycrapers] = useState([]);
   const [valorInputNome, setValorInputNome] = useState("");
   const [valorInputAltura, setValorInputAltura] = useState("");
   const [valorInputLocalizacao, setValorInputLocalizacao] = useState("");
@@ -51,6 +12,16 @@ export default function Cards() {
   const [valorInputImagemURL, setValorInputImagemURL] = useState("");
   const [index, setIndex] = useState("");
   const [editando, setEditando] = useState(false);
+
+  const loadSkycrapers = async () => {
+    const response = await fetch(`${BASE_URL}`);
+    const data = await response.json();
+    setSkycrapers(data);
+  };
+
+  useEffect(() => {
+    loadSkycrapers();
+  }, []);
 
   const abrirModal = () => {
     const modal = document.querySelector("#modal");
@@ -67,7 +38,7 @@ export default function Cards() {
     setValorInputImagemURL("");
   };
 
-  const CreateFunction = () => {
+  const CreateFunction = async () => {
     if (editando === true) {
       if (
         valorInputNome === "" ||
@@ -79,13 +50,32 @@ export default function Cards() {
         alert("Ta vaziu aí oh!");
         return;
       }
+      await fetch(`${BASE_URL}/${skycrapers[index]._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: valorInputNome,
+          altura: valorInputAltura,
+          localizacao: valorInputLocalizacao,
+          desc: valorInputDesc,
+          imagemURL: valorInputImagemURL,
+        }),
+      });
       skycrapers[index].nome = valorInputNome;
       skycrapers[index].altura = valorInputAltura;
       skycrapers[index].localizacao = valorInputLocalizacao;
       skycrapers[index].desc = valorInputDesc;
       skycrapers[index].imagemURL = valorInputImagemURL;
       setSkycrapers(skycrapers);
+      loadSkycrapers();
       setEditando(false);
+      setValorInputNome("");
+      setValorInputAltura("");
+      setValorInputLocalizacao("");
+      setValorInputDesc("");
+      setValorInputImagemURL("");
       fecharModal();
     } else {
       if (
@@ -98,6 +88,19 @@ export default function Cards() {
         alert("Ta vaziu aí oh!");
         return;
       }
+      await fetch(`${BASE_URL}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: valorInputNome,
+          altura: valorInputAltura,
+          localizacao: valorInputLocalizacao,
+          desc: valorInputDesc,
+          imagemURL: valorInputImagemURL,
+        }),
+      });
       const newSky = {
         nome: valorInputNome,
         altura: valorInputAltura,
@@ -106,6 +109,7 @@ export default function Cards() {
         imagemURL: valorInputImagemURL,
       };
       setSkycrapers([...skycrapers, newSky]);
+      loadSkycrapers();
       setValorInputNome("");
       setValorInputAltura("");
       setValorInputLocalizacao("");
@@ -126,9 +130,14 @@ export default function Cards() {
     setIndex(i);
   };
 
-  const deleteF = (i) => {
-    const filtroRemove = skycrapers.filter((s) => s !== i);
-    setSkycrapers(filtroRemove);
+  const deleteF = async (id) => {
+    let del = window.confirm("Você realmente deseja Excluir?");
+    if (del === true) {
+      await fetch(`${BASE_URL}/${id}`, {
+        method: "DELETE",
+      });
+      loadSkycrapers();
+    }
   };
 
   useEffect(() => {
@@ -140,7 +149,6 @@ export default function Cards() {
     setValorInputImagemURL(valorInputImagemURL);
     setIndex(index);
     setEditando(editando);
-    console.log(valorInputImagemURL);
   }, [
     valorInputNome,
     skycrapers,
@@ -215,7 +223,7 @@ export default function Cards() {
                 <span>Altura: {s.altura}</span>
                 <div className={"botoes"}>
                   <button onClick={() => editandoF(s, i)}>Editar</button>
-                  <button onClick={() => deleteF(s, i)}>Excluir</button>
+                  <button onClick={() => deleteF(s._id)}>Excluir</button>
                 </div>
               </section>
             );
