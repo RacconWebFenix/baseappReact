@@ -202,8 +202,10 @@ export default function Cards() {
                   placeholder="URL da Imagem"
                 />
               </div>
-              <button onClick={CreateFunction}>Save</button>
-              <button onClick={fecharModal}>Cancelar</button>
+              <div className="btnSaveCancel">
+                <button onClick={CreateFunction}>Save</button>
+                <button onClick={fecharModal}>Cancelar</button>
+              </div>
             </div>
           </div>
         </div>

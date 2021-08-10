@@ -13,7 +13,6 @@
   justify-content: center;
   color: #434343;
   box-shadow: 0 0 30px 30px #2888e0;
-
 }
 
 main.cards {
@@ -21,7 +20,6 @@ main.cards {
   padding: 32px;
   justify-content: space-between;
   overflow: auto;
-
 }
 
 main.cards section.card {
@@ -34,7 +32,7 @@ main.cards section.card {
   border-radius: 8px;
   margin-left: 32px;
   box-shadow: 0 0 15px black;
-  max-width:  300px;
+  max-width: 300px;
   min-width: 300px;
   overflow: auto;
 }
@@ -52,7 +50,7 @@ main.cards section.card img {
 main.cards section.card h3 {
   font-size: 100%;
   margin: 16px 0;
-  
+
   max-width: 240px;
 }
 
@@ -61,7 +59,6 @@ main.cards section.card span {
   max-width: 240px;
   font-size: 80%;
   margin-bottom: 16px;
-
 }
 
 main.cards section.card button {
@@ -107,17 +104,19 @@ main.cards section.card button {
 .modal {
   width: 50%;
   height: 60%;
-  background: #fff;
+  background: #2888e0;
   border-radius: 1rem;
   margin: 80px auto 0 auto;
   box-shadow: 20px 20px 50px -30px black;
 }
 
 .modal span {
-  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 3rem;
   font-size: 3rem;
   color: #000;
-  margin: 20px;
   transition: 350ms;
   cursor: pointer;
 }
@@ -132,12 +131,11 @@ main.cards section.card button {
 .inputs {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
   padding: 1rem;
   justify-content: space-around;
 }
 
-#btnCadastro{
+#btnCadastro {
   padding: 0.5rem 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -157,8 +155,62 @@ main.cards section.card button {
   font-weight: 900;
 }
 
-.contaiverBtn{
+.contaiverBtn {
   display: flex;
   flex-direction: column;
+}
 
+#btnCadastro:hover {
+  background: #2888e0;
+  transition: all 0.3s;
+  color: #464646;
+  text-shadow: black;
+  border-radius: 15px;
+  text-align: center;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #2888e0;
+  border-radius: 15px;
+  text-align: center;
+}
+input[type="text"] {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 3px solid #2888e0;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.btnSaveCancel {
+  display: flex;
+  justify-items: center;
+  justify-content: space-around;
+}
+.btnSaveCancel button {
+  min-width: 5rem;
+  max-width: 5rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 32px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(to top, #2888e0, #fff);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.363);
+  box-shadow: 0 0 15px black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnSaveCancel button:hover {
+  background: #2888e0;
+  transition: all 0.3s;
+  color: #464646;
+  text-shadow: black;
+  border-radius: 15px;
+  text-align: center;
 }
