@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Cards.css";
 
-const BASE_URL = "https://api-modelblue.herokuapp.com";
+const BASE_URL = "https://api-modelblue.herokuapp.com/skycraper";
 
 export default function Cards() {
   const [skycrapers, setSkycrapers] = useState([]);
@@ -14,8 +14,9 @@ export default function Cards() {
   const [editando, setEditando] = useState(false);
 
   const loadSkycrapers = async () => {
-    const response = await fetch(`${BASE_URL}`);
+    const response = await fetch(BASE_URL);
     const data = await response.json();
+    console.log(data)
     setSkycrapers(data);
   };
 
