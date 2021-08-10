@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Cards.css";
 
-const BASE_URL = "https://api-modelblue.herokuapp.com/skycraper";
+const BASE_URL = "https://api-modelblue.herokuapp.com/";
 
 export default function Cards() {
   const [skycrapers, setSkycrapers] = useState([]);
