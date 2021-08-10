@@ -16,7 +16,7 @@ export default function Cards() {
   const loadSkycrapers = async () => {
     const response = await fetch(BASE_URL);
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     setSkycrapers(data);
   };
 
@@ -164,9 +164,6 @@ export default function Cards() {
   return (
     <>
       <div>
-        <button className={"openModal"} onClick={abrirModal}>
-          Cadastrar
-        </button>
         <div className={"bgModal"} id={"modal"}>
           <div className={"modal"}>
             <span className={"close"} onClick={fecharModal}>
@@ -211,13 +208,20 @@ export default function Cards() {
           </div>
         </div>
       </div>
+      <div>
+        <div className="contaiverBtn">
+          <button className={"openModal"} onClick={abrirModal} id="btnCadastro">
+            Cadastrar
+          </button>
+        </div>
+      </div>
       <div className={"corpo"}>
         <main className={"cards"}>
           {skycrapers.map((s, i) => {
             return (
               <section className={"card"} key={i}>
                 <div className={"icon"}>
-                  <img src={s.imagemURL} alt={"Predio 1"}></img>
+                  <img src={s.imagemURL} alt={s.nome}></img>
                 </div>
                 <h3>{s.nome}</h3>
                 <span>{s.desc}.</span>

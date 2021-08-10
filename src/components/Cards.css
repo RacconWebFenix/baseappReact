@@ -6,21 +6,22 @@
 }
 
 .corpo {
-  background: url("../img/ceu.jpg") no-repeat center center;
-  background-size: cover;
+  background-color: #2888e0;
   height: auto;
   width: 100%;
   display: flex;
   justify-content: center;
   color: #434343;
   box-shadow: 0 0 30px 30px #2888e0;
+
 }
 
 main.cards {
   display: flex;
   padding: 32px;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  overflow: auto;
+
 }
 
 main.cards section.card {
@@ -32,7 +33,10 @@ main.cards section.card {
   padding: 1rem 1.5rem;
   border-radius: 8px;
   margin-left: 32px;
-  box-shadow: 20px 20px 50px -30px black;
+  box-shadow: 0 0 15px black;
+  max-width:  300px;
+  min-width: 300px;
+  overflow: auto;
 }
 
 main.cards section.card .icon {
@@ -48,6 +52,8 @@ main.cards section.card img {
 main.cards section.card h3 {
   font-size: 100%;
   margin: 16px 0;
+  
+  max-width: 240px;
 }
 
 main.cards section.card span {
@@ -55,6 +61,7 @@ main.cards section.card span {
   max-width: 240px;
   font-size: 80%;
   margin-bottom: 16px;
+
 }
 
 main.cards section.card button {
@@ -72,7 +79,6 @@ main.cards section.card button {
   main.cards {
     flex-direction: column;
     align-items: center;
-    flex-wrap: nowrap;
   }
   main.cards section.card {
     margin-left: 0;
@@ -129,4 +135,30 @@ main.cards section.card button {
   margin: 1rem auto;
   padding: 1rem;
   justify-content: space-around;
+}
+
+#btnCadastro{
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 32px;
+  border: 0;
+  cursor: pointer;
+  font-size: 100%;
+  font-weight: 500;
+  background: linear-gradient(to top, #2888e0, #fff);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.363);
+  box-shadow: 0 0 15px black;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 15px;
+  font-weight: 900;
+}
+
+.contaiverBtn{
+  display: flex;
+  flex-direction: column;
+
 }

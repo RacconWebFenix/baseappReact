@@ -1,0 +1,12 @@
+.titulo {
+  letter-spacing: 10px;
+  text-shadow: 0 0 15px black;
+  text-transform: uppercase;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+  .titulo {
+    margin-top: 5rem;
+  }
+}
