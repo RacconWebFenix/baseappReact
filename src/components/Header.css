@@ -4,11 +4,13 @@
 a {
   color: #fff;
   text-decoration: none;
+
 }
 
 a:hover {
   opacity: 0.7;
   transition: 0.3s;
+  
 }
 
 .logo {
@@ -19,20 +21,21 @@ a:hover {
 nav {
   display: flex;
   justify-content: space-around;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
   align-items: center;
   background: #23232e;
   height: 8vh;
   top: 2vh;
-  border-radius: 1rem;
   position: fixed;
-  right: 0;
+  right: 2vh;
+  
 }
 
 .nav-list {
   list-style: none;
   display: flex;
   border-radius: 1rem;
+  
 }
 
 .nav-list li {
@@ -60,27 +63,30 @@ nav {
   .nav-list {
     position: absolute;
     top: 5vh;
-    right: 0;
+    right: -10vh;
     width: 50vw;
-    height: 92vh;
+    height: 25vh;
     background: #23232e;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    transform: translateX(100%);
+    transform: translateX(110%);
     transition: transform 0.3s ease-in;
   }
   .nav-links {
-    margin-left: 0;
+    margin-left: 15px;
     opacity: 0;
   }
   .mobile-menu {
     display: block;
   }
+  .nav-links a{
+    margin-right: 3rem;
+  }
 }
 
 .nav-list.active {
-  transform: translateX(0);
+  transform: translateX(-10vh);
 }
 
 @keyframes navLinkFade {
@@ -105,3 +111,4 @@ nav {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
+
