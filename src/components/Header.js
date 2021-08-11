@@ -32,7 +32,7 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <div className="bgteste">
       <header>
         <nav>
           <Link to="/">

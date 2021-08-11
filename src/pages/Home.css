@@ -16,11 +16,11 @@
 
 .titulo1 {
   letter-spacing: 2vmax;
-  text-shadow: 5px 2px 5px rgb(0, 0, 0);
+  text-shadow: 0 0 5px  white;
   text-align: center;
   text-transform: uppercase;
   font-size: 5vmax;
-  color: rgb(134, 134, 252);
+  color: rgb(1, 1, 34);
 }
 
 @keyframes changeBackGround {
