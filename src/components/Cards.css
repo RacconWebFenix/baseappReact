@@ -44,14 +44,22 @@ main.cards section.card .icon {
 
 main.cards section.card img {
   width: 100%;
+  max-height: 200px;
   border-radius: 10px;
 }
 
 main.cards section.card h3 {
   font-size: 100%;
   margin: 16px 0;
-
   max-width: 240px;
+}
+
+.desc{
+  min-height: 50px;
+  max-height: 50px;
+  max-width: 50px;
+
+  overflow: auto;
 }
 
 main.cards section.card span {
@@ -66,10 +74,22 @@ main.cards section.card button {
   text-transform: uppercase;
   border-radius: 32px;
   border: 0;
+  background: linear-gradient(to top, #2888e0, #fff);
   cursor: pointer;
   font-size: 80%;
   font-weight: 500;
-  background: linear-gradient(to right, rgb(133, 115, 115), rgb(190, 189, 189));
+
+ 
+ 
+ 
+}
+
+main.cards section.card button:hover {
+  background-color: linear-gradient(to top, #00376b, rgb(105, 105, 105));
+  cursor: pointer;
+  font-size: 80%;
+  font-weight: 900;
+  
 }
 
 @media screen and (max-width: 1200px) {

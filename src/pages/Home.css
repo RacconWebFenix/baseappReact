@@ -1,18 +1,42 @@
-.bgapp{
-    background: url("../img/ceu.jpg") no-repeat center center ;
-    background-size: cover;
-    height: 100vh;
+.containerHome{
+  height: 100vh;
+  z-index: -5;
 }
-.titulo {
-    letter-spacing: 10px;
-    text-shadow: 0 0 15px black;
-    text-transform: uppercase;
-    margin: 1rem;
+
+.bgapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url("../img/bgHome.jpeg") no-repeat center center;
+  height: 100vh;
+  animation: changeBackGround 30s infinite;
+
+}
+
+.titulo1 {
+  letter-spacing: 2vmax;
+  text-shadow: 5px 2px 5px rgb(0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 5vmax;
+  color: rgb(134, 134, 252);
+}
+
+@keyframes changeBackGround {
+  0% {
+    background-position: left;
+    background-size: 250vh;
+
   }
-  
-  @media screen and (max-width: 500px) {
-    .titulo {
-      margin-top: 5rem;
-    }
+  50% {
+    background-position: right;
+    background-size: 200hv;
+
   }
-  
+  100% {
+    background-position: left;
+    background-size: 250vh;
+
+  }
+}

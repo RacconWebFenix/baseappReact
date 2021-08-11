@@ -225,8 +225,9 @@ export default function Cards() {
                   <img src={s.imagemURL} alt={s.nome}></img>
                 </div>
                 <h3>{s.nome}</h3>
-                <span>{s.desc}.</span>
+                <span className="desc">{s.desc}.</span>
                 <span>Altura: {s.altura}</span>
+                <span>Localização: {s.localizacao}</span>
                 <div className={"botoes"}>
                   <button onClick={() => editandoF(s, i)}>Editar</button>
                   <button onClick={() => deleteF(s._id)}>Excluir</button>
